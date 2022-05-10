@@ -8,7 +8,7 @@ const hbs = exphbs.create({});
 const session = require('express-session');
 
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const PORT = process.env.PORT || 3051;
+const PORT = process.env.PORT || 3081;
 
 const sess = {
   secret: 'Super secret secret',
