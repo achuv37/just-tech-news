@@ -4,11 +4,13 @@ const sequelize = require('./config/connection');
 const path = require('path');
 const app = express();
 const exphbs = require('express-handlebars');
-const hbs = exphbs.create({});
+const helpers = require('./utils/helpers');
+const hbs = exphbs.create({ helpers });
 const session = require('express-session');
 
+
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const PORT = process.env.PORT || 3081;
+const PORT = process.env.PORT || 3051;
 
 const sess = {
   secret: 'Super secret secret',
@@ -26,6 +28,7 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 // turn on routes
 app.use(routes);
